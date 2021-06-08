@@ -1,0 +1,22 @@
+.login_form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  min-width: 300px;
+  margin-top: 20px;
+}
+
+.link {
+  color: #002649;
+  text-decoration: underline;
+}
+
+.errorMessage {
+  color: red;
+  float: left;
+}
+
+.login-btn {
+  color: #fff !important;
+  background-color: #3f51b5 !important;
+}

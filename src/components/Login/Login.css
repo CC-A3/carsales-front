@@ -1,0 +1,75 @@
+.grid{
+  padding: 10px;
+}
+.paper {
+  min-height: 300px;
+  padding: 20px;
+  max-width: 500px;
+  min-width: 400px;
+  margin: 30px auto;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.content {
+  margin-top: 40px !important;
+}
+
+.login-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 280px;
+  margin: 30px auto 0; 
+}
+
+.btn-login {
+  border-radius: 25px;
+  border:  1px solid #9b9b9b;
+  background-color: #fff;
+  min-height: 50px;
+  position: relative;
+  outline: none;
+  cursor: pointer
+}
+
+
+.btn-img {
+  width: 89px;
+  align-items: center;
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  outline: none;
+}
+
+.btn-title {
+  padding-left: 15px;
+  outline: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-size: 15px !important;
+}
+
+.btn-link {
+  text-decoration: none;
+  color: black
+}
+
+.google-inner {
+  padding-left: 37px;
+}
+

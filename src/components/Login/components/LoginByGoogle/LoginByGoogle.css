@@ -1,0 +1,14 @@
+.google {
+  border-radius: 25px !important;
+  background-color: #fff !important;
+  min-height: 50px;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  box-shadow: none !important;
+  font-size: 15px !important;
+  font-weight: 400;
+  display: flex;
+  flex-direction: row;
+  color: black !important;
+}

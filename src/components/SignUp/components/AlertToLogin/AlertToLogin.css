@@ -1,0 +1,23 @@
+.resend__container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.alertToLogin-link {
+  text-decoration: none;
+}
+
+.alertToLogin-btn {
+  color: #fff !important;
+  background-color: #3f51b5 !important;
+}
+
+.alertToLogin-bg {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #f2f2f2;
+}

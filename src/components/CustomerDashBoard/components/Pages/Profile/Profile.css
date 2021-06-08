@@ -1,0 +1,36 @@
+.profile-page {
+  position: absolute;
+  padding: 30px;
+  width: 600px;
+  text-align: center;
+  margin: auto;
+  top: 0px;
+  left: 80px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.profile-header {
+  padding: 30px;
+}
+
+.profile-title {
+
+}
+
+.profile-label {
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.profile-textField {
+  margin-top: 10px;
+}
+
+.profile-btn {
+  padding-top: 20px;
+}
+
+.password-btn {
+  padding-top: 40px;
+}
