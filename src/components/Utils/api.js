@@ -71,11 +71,12 @@ export const addCarForSale = ({ title, price, kilometers, colour, body, engine, 
     ownerId,
   }
 });
-export const fetchVehiclesByType = (type) => axios({
+export const fetchVehiclesByType = ({ type, clientId }) => axios({
   method: 'get',
   url: `${baseUrl}/vehicles`,
   params: {
     type,
+    clientId,
   },
 });
 

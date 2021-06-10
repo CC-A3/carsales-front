@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './WatchListCard.css';
-import c from '../../../Dashboard/components/CarCarousel/assets/car2.png'
 
 const WatchListCard = (detail) => {
   const car = detail.detail;

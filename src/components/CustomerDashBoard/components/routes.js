@@ -4,7 +4,6 @@ import WatchListIcon from "./assets/WatchListIcon.svg";
 import WatchListIconActive from "./assets/WatchListIconActive.svg";
 import SallCarIcon from "./assets/SallCarIcon.svg";
 import SallCarIconActive from "./assets/SallCarIconActive.svg";
-// import SignOutIcon from "./assets/SignOutIcon.svg";
 import ProfileIcon from "./assets/ProfileIcon.svg";
 import ProfileIconActive from "./assets/ProfileIconActive.svg";
 import Dashboard from "./Pages/Dashboard/Dashboard";
@@ -41,12 +40,6 @@ const routes = [
     activeIcon: SallCarIconActive,
     component: <SallCar />,
   },
-  // {
-  //   label: "Sign Out",
-  //   path: "/sign-out",
-  //   icon: SignOutIcon,
-  //   activeIcon: SignOutIcon,
-  // },
 ];
 
 export default routes;

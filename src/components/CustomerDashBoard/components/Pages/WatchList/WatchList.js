@@ -15,7 +15,7 @@ const WatchList = () => {
     }
 
     fetchWatchLists();
-  },[])
+  },[clientId])
 
   return (
     <section className="watchList-results">

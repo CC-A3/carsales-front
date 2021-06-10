@@ -5,7 +5,7 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import email from './assets/gmail.png';
-import LoginByGoogle from './components/LoginByGoogle/LoginByGoogle';
+// import LoginByGoogle from './components/LoginByGoogle/LoginByGoogle';
 import './Login.css';
 
 const Login = () => (
@@ -16,13 +16,13 @@ const Login = () => (
           <Typography component="h1" variant="h5">
             Welcome to carsales
           </Typography>
-          <div className="btn-container">
+          {/* <div className="btn-container">
             <div className="btn-login" >
               <div className="google-inner">
                 <LoginByGoogle />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="btn-container">
             <button className="btn-login">
               <div className="btn-inner">

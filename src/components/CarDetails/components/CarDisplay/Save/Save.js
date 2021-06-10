@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Save = ({ active, setActive}) => {
   const url = useLocation().pathname;
-  const index = url.lastIndexOf("\/");
+  const index = url.lastIndexOf("/");
   const vehicleId = url.substring(index + 1, url.length).toUpperCase();
   const clientId = localStorage.getItem('userId');
   const classes = useStyles();

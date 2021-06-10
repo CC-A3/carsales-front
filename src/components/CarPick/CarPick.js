@@ -6,15 +6,16 @@ import * as api from '../Utils/api';
 
 const CarPick = () => {
   const url = useLocation().pathname;
-  const index = url.lastIndexOf("\/");
+  const index = url.lastIndexOf("/");
   const type = url.substring(index + 1, url.length).toUpperCase();
   
   const [details, setDetails] = useState([])
 
   useEffect(() => {
     const fetchVehicles =async () => {
-      
-      const fetchVehiclesRes = await api.fetchVehiclesByType(type);
+      const clientId = localStorage.getItem('userId');
+      console.log(clientId);
+      const fetchVehiclesRes = await api.fetchVehiclesByType({ type, clientId });
       if (fetchVehiclesRes.status === 200) {
         setDetails(fetchVehiclesRes.data);
       }
@@ -22,7 +23,7 @@ const CarPick = () => {
 
     fetchVehicles();
     
-  }, [])
+  }, [type])
 
   return (
     <div>

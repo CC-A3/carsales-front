@@ -39,7 +39,7 @@ const CarDetails = () => {
   const clientId = localStorage.getItem('userId');
   const classes = useStyles();
   const url = useLocation().pathname;
-  const index = url.lastIndexOf("\/");
+  const index = url.lastIndexOf("/");
   const vehicleId = url.substring(index + 1, url.length).toUpperCase();
 
   const [details, setDetails] = useState([]);
@@ -56,7 +56,7 @@ const CarDetails = () => {
 
     fetchVehicles();
     
-  }, [])
+  }, [clientId, vehicleId])
 
   return (
     <div className={classes.page}>
