@@ -6,8 +6,8 @@ import Ute from './assets/Ute.png';
 import Convertible from './assets/Convertible.png';
 import CabChassis from './assets/CabChassic.png';
 import Coupe from './assets/Coupe.png';
-import PeopleMover from './assets/PeopleMover.png';
-import Van from './assets/Van.png';
+// import PeopleMover from './assets/PeopleMover.png';
+// import Van from './assets/Van.png';
 // import Bus from './assets/Bus.png';
 // import LightTruck from './assets/LightTruck.png';
 
@@ -54,16 +54,16 @@ const carType = [
     icon: Coupe,
     label: 'Coupe',
   },
-  {
-    path: '/dashboard-customer/dashboard/cars/peopleMover',
-    icon: PeopleMover,
-    label: 'PeopleMover',
-  },
-  {
-    path: '/dashboard-customer/dashboard/cars/van',
-    icon: Van,
-    label: 'Van',
-  },
+  // {
+  //   path: '/dashboard-customer/dashboard/cars/peopleMover',
+  //   icon: PeopleMover,
+  //   label: 'PeopleMover',
+  // },
+  // {
+  //   path: '/dashboard-customer/dashboard/cars/van',
+  //   icon: Van,
+  //   label: 'Van',
+  // },
   // {
   //   path: '/dashboard-customer/dashboard/cars',
   //   icon: Bus,

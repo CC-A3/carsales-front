@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import CircularProgress from '@material-ui/core/CircularProgress';
 // import { Button, Typography } from '@material-ui/core'
 import CarDisplay from './components/CarDisplay/CarDisplay';
 import CarSpecifications from './components/CarSpecifications/CarSpecifications';
@@ -30,7 +31,7 @@ const useStyles = makeStyles(() => ({
     fontSize: 20,
   },
   page: {
-    marginLeft: '500px'
+    marginLeft: '300px'
   }
 }));
 
@@ -43,6 +44,7 @@ const CarDetails = () => {
   const vehicleId = url.substring(index + 1, url.length).toUpperCase();
 
   const [details, setDetails] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchVehicles =async () => {
@@ -51,6 +53,7 @@ const CarDetails = () => {
       if (fetchSingleVehiclesRes.status === 200) {
         setDetails(fetchSingleVehiclesRes.data);
         setActive(fetchSingleVehiclesRes.data.isWatched);
+        setIsLoading(false);
       }
     }
 
@@ -59,18 +62,22 @@ const CarDetails = () => {
   }, [clientId, vehicleId])
 
   return (
-    <div className={classes.page}>
-      <CarHeader details={details} />
-      <CarDisplay details={details} active={active} setActive={setActive} />
-      <CarSpecifications details={details} />
-      <section class="owner-display-wrap">
-        <div className="row">
-          <div className={classes.contents}>
-            <Contact details={details} />
+    <>
+      {isLoading ? <CircularProgress /> : 
+        <div className={classes.page}>
+        <CarHeader details={details} />
+        <CarDisplay details={details} active={active} setActive={setActive} />
+        <CarSpecifications details={details} />
+        <section class="owner-display-wrap">
+          <div className="row">
+            <div className={classes.contents}>
+              <Contact details={details} />
+            </div>
           </div>
+        </section>
         </div>
-      </section>
-    </div>
+      }
+    </>
   )
 }
 
