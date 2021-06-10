@@ -13,6 +13,7 @@ import SignUp from '../SignUp/SignUp';
 import AlertToLogin from '../SignUp/components/AlertToLogin/AlertToLogin';
 import ActiveUser from '../SignUp/components/ActiveUser/ActiveUser';
 import CustomerDashBoard from '../CustomerDashBoard/CustomerDashBoard';
+import CarDetails from '../CarDetails/CarDetails';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -50,6 +51,7 @@ const App = () => (
       <PublicRoute path="/alertToLogin" restricted={true} component={AlertToLogin} />
       <PublicRoute path="/verify-link" restricted={true} component={ActiveUser} />
       <PrivateRoute path="/dashboard-customer" component={CustomerDashBoard} />
+      <PrivateRoute path='/test' component={CarDetails} />
     </Switch>
   </Router>
 )

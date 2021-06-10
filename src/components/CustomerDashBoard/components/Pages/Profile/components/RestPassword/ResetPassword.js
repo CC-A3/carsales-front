@@ -28,7 +28,7 @@ const ResetPassword = ({ onClick, showPasswordForm }) => {
         localStorage.clear();
         localStorage.setItem('isLogin', 'false');
         history.push('./email');
-        
+        window.location.reload();
       }
     } catch (error) {
       if (error.response.status === 400) {

@@ -1,0 +1,12 @@
+.carPick-results {
+  width: calc(100% - 32px);
+  padding: 30px 10px 30px 40px;
+}
+
+.carPick-number {
+  color: #4A4A4A;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 40px;
+}

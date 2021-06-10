@@ -1,0 +1,105 @@
+@media screen and (min-width: 1720px) {
+  .watchListCard-item {
+    width: 25%
+  };
+}
+@media screen and (max-width: 1720px) {
+  .watchListCard-item {
+    width: 33%
+  };
+}
+@media screen and (max-width: 1200px) {
+  .watchListCard-item {
+    width: 50%
+  };
+}
+@media screen  and (max-width: 768px) {
+  .watchListCard-item {
+    width: 100%
+  };
+}
+
+.watchListCard-item {
+  box-sizing: border-box;
+  min-width: 320px;
+  float: left;
+  display: block;
+  padding: 0px 0px 60px 0px;
+}
+
+.watchListCard-link {
+  padding: 10px 10px 0 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: #e6edf2;
+  height: 375px;
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+  transition: box-shadow .18s linear;
+  box-shadow: 0px 10px 20px 0px rgb(0 0 0 /4%);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.watchListCard-image {
+  border-radius: 12px;
+  height: 150px;
+  width: 300px;
+  margin: 0 auto 17px auto;
+  display: block;
+  object-fit: cover;
+  vertical-align: middle;
+  border-style: none;
+}
+
+.watchListCard-title {
+  color: #4A4A4A;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.watchListCard-badges {
+  color: #4A4A4A;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 16px;
+}
+
+.watchListCard-label {
+  font-size: 11px;
+  line-height: 15px;
+  display: block;
+  margin-bottom: 4px;
+  color: #808080;
+}
+
+.watchListCard-price {
+  color: #4A4A4A;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 10px;
+  
+}
+
+.watchListCard-offers {
+  margin-top: 0 !important;
+  padding-top: 17px;
+  height: 10px;
+  width: 100%;
+  border-radius: 0 0 12px 12px;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  color: #5d64cc;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+}

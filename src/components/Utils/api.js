@@ -54,3 +54,68 @@ export const changePassword = ({ id, previousPassword, newPassword }) => axios({
     newPassword,
   },
 });
+
+export const addCarForSale = ({ title, price, kilometers, colour, body, engine, transmission, fuelConsumption, type, ownerId}) => axios({
+  method: 'post',
+  url: `${baseUrl}/vehicles/add`,
+  data: {
+    title,
+    price,
+    kilometers,
+    colour,
+    body,
+    engine,
+    transmission,
+    fuelConsumption,
+    type,
+    ownerId,
+  }
+});
+export const fetchVehiclesByType = (type) => axios({
+  method: 'get',
+  url: `${baseUrl}/vehicles`,
+  params: {
+    type,
+  },
+});
+
+export const fetchVehicleById = ({vehicleId, clientId}) => axios({
+  method: 'get',
+  url: `${baseUrl}/vehicle`,
+  params: {
+    vehicleId,
+    clientId,
+  }
+})
+
+export const subscribeVehicle = ({ vehicleId, clientId }) => axios({
+  method: 'post',
+  url: `${baseUrl}/vehicles/${vehicleId}/subscribe/${clientId}`,
+});
+
+export const unSubscribeVehicle = ({ vehicleId, clientId }) => axios({
+  method: 'post',
+  url: `${baseUrl}/vehicles/${vehicleId}/unsubscribe/${clientId}`,
+});
+
+
+export const fetchWatchList = (clientId) => axios({
+  method: 'get',
+  url: `${baseUrl}/vehicles/watch-list/${clientId}`,
+});
+
+export const fetchVehiclesByOwnerId = (ownerId) => axios({
+  method: 'get',
+  url: `${baseUrl}/vehicles/own-vehicles/${ownerId}`,
+});
+
+export const modifyPrice = ({ id, price }) => axios({
+  method: 'put',
+  url: `${baseUrl}/vehicles/${id}/price/${price}`,
+});
+
+export const changeStatus = ({ id, status }) => axios({
+  method: 'put',
+  url: `${baseUrl}/vehicles/${id}/status/${status}`,
+});
+
