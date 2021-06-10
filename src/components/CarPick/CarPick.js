@@ -4,8 +4,6 @@ import SingleCarCard from './components/SingleCarCard';
 import './CarPick.css';
 import * as api from '../Utils/api';
 
-
-
 const CarPick = () => {
   const url = useLocation().pathname;
   const index = url.lastIndexOf("\/");

@@ -12,7 +12,7 @@ const CarDisplay = ({ details, active, setActive }) => {
           <div className="thumb-wrapper-hero-overlay">
             <div className="gallery-portal-top">
               <section className="section-saved-status">
-                <Save details={details} active={active} setActive={setActive} />
+                <Save active={active} setActive={setActive} />
               </section>
             </div>
           </div>

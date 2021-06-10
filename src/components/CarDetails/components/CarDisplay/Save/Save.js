@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Save = ({details, active, setActive}) => {
+const Save = ({ active, setActive}) => {
   const url = useLocation().pathname;
   const index = url.lastIndexOf("\/");
   const vehicleId = url.substring(index + 1, url.length).toUpperCase();

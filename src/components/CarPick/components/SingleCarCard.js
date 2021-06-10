@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './SingleCarCard.css'
-import c from '../../CustomerDashBoard/components/Pages/Dashboard/components/CarCarousel/assets/car1.png';
+import star from '../../CarDetails/components/CarDisplay/assets/star.svg';
+import starActive from '../../CarDetails/components/CarDisplay/assets/starActive.svg';
 
 const SingleCarCard = (detail) => {
   const car = detail.detail;
@@ -16,6 +17,10 @@ const SingleCarCard = (detail) => {
         <h4 className="singleCard-price">
           "${car.price}"
         </h4>
+        {car.isWatched === true ?
+          <img src={starActive} alt='save' style={{ height: '16px', width: '16px' }} /> :
+          <img src={star} alt='save' style={{ height: '16px', width: '16px' }} />
+        }
         <h5 className="singleCard-offers">Learn more</h5>
       </Link>
     </div>
