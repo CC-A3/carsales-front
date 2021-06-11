@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:8080/api/v1';
+const baseUrl = process.env.REACT_APP_CAR_SALE_GUIDE_API;
 
 export const login = ({ email, password }) => axios({
   method: 'post',

@@ -8,7 +8,7 @@ phases:
       - yarn install
   build:
     commands:
-      - REACT_APP_ASYNC_WORK_API=https://second-handcarsale.com/api/v1 yarn build
+      - REACT_APP_CAR_SALE_GUIDE_API=https://carsaleguide.com/api/v1 yarn build
 
   
  
