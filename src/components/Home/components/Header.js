@@ -65,12 +65,17 @@ const Header = () => {
           <h1 className={classes.appbarTitle}>
             Car<span className={classes.colorText}>Sales</span>
           </h1>
-          <Fab size="medium" color="primary" variant="extended" className={classes.margin}>
-            <Link to="/login" className={classes.link}>Login</Link>
-          </Fab>
-          <Fab size="medium" color="secondary" variant="extended" className={classes.margin}>
-            <Link to="/login" className={classes.link}>Sell My Car</Link>
-          </Fab>
+          <Link to="/login" className={classes.link}>
+            <Fab size="medium" color="primary" variant="extended" className={classes.margin}>
+              Login
+            </Fab>
+          </Link>
+          <Link to="/login" className={classes.link}>
+            <Fab size="medium" color="secondary" variant="extended" className={classes.margin}>
+              Sell My Car
+            </Fab>
+          </Link>
+          
         </Toolbar>
       </AppBar>
 
