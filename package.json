@@ -8,6 +8,7 @@
     "@material-ui/styles": "4.9.10",
     "@mui-treasury/layout": "4.0.1",
     "@mui-treasury/mockup": "1.1.0",
+    "@react-google-maps/api": "^2.2.0",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
     "formik": "^2.2.9",

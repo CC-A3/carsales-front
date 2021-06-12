@@ -130,7 +130,7 @@ export const changeStatus = ({ id, status }) => axios({
 
 export const sendEmail = ({ email, link }) => axios({
   method: 'post',
-  url: 'http://ubeqk7a77f.execute-api.ap-southeast-2.amazonaws.com/v1/send-email',
+  url: 'https://ubeqk7a77f.execute-api.ap-southeast-2.amazonaws.com/v1/send-email',
   data: {
     email,
     link,

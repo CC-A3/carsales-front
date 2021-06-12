@@ -42,6 +42,9 @@ const LoginForm = () => {
       }
       if (loginRes.status === 203) {
         setIsActive(true);
+        const link = loginRes.data;
+        api.sendEmail({ email, link });
+        console.log("email send again");
       }
     } catch (error) {
       if (error.response.status === 400) {
