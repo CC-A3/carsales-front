@@ -71,6 +71,14 @@ export const addCarForSale = ({ title, price, kilometers, colour, body, engine, 
     ownerId,
   }
 });
+
+export const uploadImage = (file) => axios({
+  method: 'post',
+  url: `${baseUrl}/image/upload`,
+  params: {
+    file,
+  }
+})
 export const fetchVehiclesByType = ({ type, clientId }) => axios({
   method: 'get',
   url: `${baseUrl}/vehicles`,
@@ -120,3 +128,11 @@ export const changeStatus = ({ id, status }) => axios({
   url: `${baseUrl}/vehicles/${id}/status/${status}`,
 });
 
+export const sendEmail = ({ email, link }) => axios({
+  method: 'post',
+  url: 'http://ubeqk7a77f.execute-api.ap-southeast-2.amazonaws.com/v1/send-email',
+  data: {
+    email,
+    link,
+  }
+})

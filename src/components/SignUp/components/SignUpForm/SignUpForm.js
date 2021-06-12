@@ -43,6 +43,8 @@ const SignUpForm = () => {
       if (signupRes.status === 200) {
         history.push('/alertToLogin');
         console.log(signupRes.data);
+        const link = signupRes.data;
+        api.sendEmail({email, link});
       }
     } catch {
       
