@@ -98,9 +98,15 @@ const ImageUploader = ({setImgUrl}) => {
       const file = new FormData();
       file.append("file", image);
 
+      // const imgRes = api.uploadImage(file);
+      // if (imgRes.status === 200) {
+      //   console.log(imgRes.data, "return image value");
+      //   setImgUrl(imgRes.data);
+      // }
+
       axios
         .post(
-        `http://localhost:8080/api/v1/vehicles/upload`,
+        `https://api.secondhand-carsales.com/api/v1/vehicles/upload`,
         file,
         {
           headers: {
@@ -109,8 +115,9 @@ const ImageUploader = ({setImgUrl}) => {
         }
       ).then((res) => {
         console.log("file upload successfully")
-        console.log(res.data);
-        setImgUrl(res.data);
+        const url = `http://${res.data}`
+        console.log(url);
+        setImgUrl(url);
       }).catch(err => {
         console.log(err);
       })

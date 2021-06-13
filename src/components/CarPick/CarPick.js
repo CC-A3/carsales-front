@@ -21,6 +21,7 @@ const CarPick = () => {
       if (fetchVehiclesRes.status === 200) {
         setDetails(fetchVehiclesRes.data);
         setIsLoading(false);
+        console.log(fetchVehiclesRes.data, "数值");
       }
     }
 
@@ -39,9 +40,9 @@ const CarPick = () => {
                    {details.length} cars
               </h2>
            
-            {details.map((detail) => (
+            {details.map((detail,index) => (
               <>
-                <SingleCarCard detail={detail} />
+                <SingleCarCard detail={detail} index={index}/>
               </>
             ))}
           </>

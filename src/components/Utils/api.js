@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = process.env.REACT_APP_CAR_SALE_GUIDE_API;
+// const baseUrl = "https://api.secondhand-carsales.com/api/v1";
 
 export const login = ({ email, password }) => axios({
   method: 'post',
@@ -78,6 +79,9 @@ export const addCarForSale = ({ title, price, kilometers, colour, body, engine, 
 //   url: `${baseUrl}/vehicles/upload`,
 //   params: {
 //     file,
+//   },
+//   headers: {
+//     "Content-Type": "multipart/from-data"
 //   }
 // })
 export const fetchVehiclesByType = ({ type, clientId }) => axios({
