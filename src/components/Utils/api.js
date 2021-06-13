@@ -136,3 +136,38 @@ export const sendEmail = ({ email, link }) => axios({
     link,
   }
 })
+
+export const sendSheet = ({
+  email,
+    title,
+    price,
+    kilometers,
+    colour,
+    body,
+    engine,
+    transmission,
+    fuelConsumption,
+    type,
+    fullName,
+    OwnerEmail,
+    phoneNumber
+}) => axios({
+  method: 'post',
+  url: 'https://u0127zx9oe.execute-api.ap-southeast-2.amazonaws.com/sheet/vehicle-sheet',
+  data: {
+    email,
+    title,
+    price,
+    kilometers,
+    colour,
+    body,
+    engine,
+    transmission,
+    fuelConsumption,
+    type,
+    fullName,
+    OwnerEmail,
+    phoneNumber
+  }
+})
+

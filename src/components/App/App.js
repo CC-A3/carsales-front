@@ -13,7 +13,7 @@ import SignUp from '../SignUp/SignUp';
 import AlertToLogin from '../SignUp/components/AlertToLogin/AlertToLogin';
 import ActiveUser from '../SignUp/components/ActiveUser/ActiveUser';
 import CustomerDashBoard from '../CustomerDashBoard/CustomerDashBoard';
-import CarDetails from '../CarDetails/CarDetails';
+import Test from '../Home/components/CarSalesMap';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -44,6 +44,7 @@ const PublicRoute = ({ component: Component,restricted, ...rest }) => (
 const App = () => (
   <Router>
     <Switch>
+    <PublicRoute path="/test" restricted={false} component={Test} />
       <PublicRoute exact path="/" restricted={false} component={LandingPage} />
       <PublicRoute path="/login" restricted={false} component={Login} />
       <PublicRoute path="/email" restricted={true} component={LoginByEmail} />
@@ -51,7 +52,6 @@ const App = () => (
       <PublicRoute path="/alertToLogin" restricted={true} component={AlertToLogin} />
       <PublicRoute path="/verify-link" restricted={true} component={ActiveUser} />
       <PrivateRoute path="/dashboard-customer" component={CustomerDashBoard} />
-      <PrivateRoute path='/test' component={CarDetails} />
     </Switch>
   </Router>
 )

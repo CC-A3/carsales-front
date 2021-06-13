@@ -1,17 +1,26 @@
-import { Box, Button, Card, CardContent, CircularProgress, Grid, Step, StepLabel, Stepper } from '@material-ui/core';
+import { Box, Button, Card, CardContent, CircularProgress, Grid, Step, StepLabel, Stepper, Snackbar } from '@material-ui/core';
 import { Field, Form, Formik, } from 'formik';
-import { CheckboxWithLabel, TextField } from 'formik-material-ui';
+import MuiAlert from '@material-ui/lab/Alert';
+import { useHistory } from "react-router-dom";
+import {  TextField } from 'formik-material-ui';
 import React, { useState } from 'react';
 // import { mixed, number, object } from 'yup';
 import ImageUploader from '../ImageUploader/ImageUploader';
+import * as api from '../../../../../../Utils/api';
+import './SellCarFrom.css';
 
 const sleep = (time) => new Promise((acc) => setTimeout(acc, time));
 
-export default function Home() {
+export default function SellCarForm() {
+  const history = useHistory();
   const [imgUrl, setImgUrl] = useState([])
     // const inputRef = React.useRef()
 
   return (
+    <div className="sellCarForm-page">
+      <header className="sellCarForm-header">
+        <h1 className="sellCarForm-title">Sell my car</h1>
+      </header>
     <Card>
       <CardContent>
         <FormikStepper
@@ -30,7 +39,40 @@ export default function Home() {
           onSubmit={async (values) => {
             await sleep(300);
             console.log('values', values);
-            console.log(imgUrl);
+            
+            const title = values.title;
+            const price = values.price;
+            const kilometers = values.kilometers;
+            const colour = values.colour;
+            const body = values.body;
+            const engine = values.engine;
+            const transmission = values.engine;
+            const fuelConsumption = values.fuelConsumption;
+            const type = values.type;
+            const ownerId = localStorage.getItem("userId");
+
+            try {
+              const sellCarRes =await api.addCarForSale({
+                title,
+                price,
+                kilometers,
+                colour,
+                body,
+                engine,
+                transmission,
+                fuelConsumption,
+                type,
+                ownerId,
+              })
+              if (sellCarRes.status === 200) {
+                console.log("go");
+                const id = sellCarRes.data.id;
+                const path = `/dashboard-customer/dashboard/cars/${id}`;
+                history.push(path);
+              }
+            } catch (error) {
+              
+            }
           }}
         >
           <FormikStep label="Vehicle Type">
@@ -41,6 +83,9 @@ export default function Home() {
               <Field fullWidth name="title" component={TextField} label="Vehicle Name" />
             </Box>
             <Box paddingBottom={2}>
+              <Field fullWidth name="price" component={TextField} label="Vehicle Price" />
+            </Box>
+            {/* <Box paddingBottom={2}>
               <Field
                 fullWidth
                 name="price"
@@ -48,7 +93,7 @@ export default function Home() {
                 component={TextField}
                 label="Price"
               />
-            </Box>
+            </Box> */}
           </FormikStep>
           <FormikStep
             label="Vehicle Details"
@@ -90,6 +135,7 @@ export default function Home() {
         </FormikStepper>
       </CardContent>
     </Card>
+    </div>
   );
 }
 
@@ -108,6 +154,24 @@ export function FormikStepper({ children, ...props }) {
     return step === childrenArray.length - 1;
   }
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
   return (
     <Formik
       {...props}
@@ -118,18 +182,6 @@ export function FormikStepper({ children, ...props }) {
           setCompleted(true);
         } else {
           setStep((s) => s + 1);
-
-          // the next line was not covered in the youtube video
-          //
-          // If you have multiple fields on the same step
-          // we will see they show the validation error all at the same time after the first step!
-          //
-          // If you want to keep that behaviour, then, comment the next line :)
-          // If you want the second/third/fourth/etc steps with the same behaviour
-          //    as the first step regarding validation errors, then the next line is for you! =)
-          //
-          // In the example of the video, it doesn't make any difference, because we only
-          //    have one field with validation in the second step :)
           helpers.setTouched({});
         }
       }}
@@ -166,9 +218,20 @@ export function FormikStepper({ children, ...props }) {
                 variant="contained"
                 color="primary"
                 type="submit"
+                onClick = {isSubmitting ? 'Submitting' : isLastStep() ? handleClick : ''  }
               >
                 {isSubmitting ? 'Submitting' : isLastStep() ? 'Submit' : 'Next'}
               </Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={5000}
+                onClose={handleClose}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center',}}
+              >
+                <Alert onClose={handleClose} severity="success">
+                  Add Car Success!
+                </Alert>
+              </Snackbar>
             </Grid>
           </Grid>
         </Form>

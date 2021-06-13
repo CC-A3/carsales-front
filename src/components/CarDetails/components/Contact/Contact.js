@@ -35,7 +35,6 @@ const Contact = (details) => {
 
   const handleClickOpen =async () => {
     setOpen(true);
-    console.log(id, "ownerId")
     const fetchOwnerDetails =await api.fetchClientProfile(id);
     if (fetchOwnerDetails.status === 200) {
       setOwner(fetchOwnerDetails.data);
@@ -45,6 +44,62 @@ const Contact = (details) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+
+
+  const email = localStorage.getItem("email");
+  const title = details.details.title;
+  const price = details.details.price;
+  const kilometers = details.details.kilometers;
+  const colour = details.details.colour;
+  const body = details.details.body;
+  const engine = details.details.engine;
+  const transmission = details.details.transmission;
+  const fuelConsumption = details.details.fuelConsumption;
+  const type = details.details.type;
+  const fullName = owner.fullName;
+  const OwnerEmail = owner.email;
+  const phoneNumber = owner.phoneNumber;
+
+  const handleSend = () => {
+    console.log(
+         email,
+      title,
+      price,
+      kilometers,
+      colour,
+      body,
+      engine,
+      transmission,
+      fuelConsumption,
+      type,
+      fullName,
+      OwnerEmail,
+      phoneNumber
+    );
+
+    
+    api.sendSheet({
+      email,
+      title,
+      price,
+      kilometers,
+      colour,
+      body,
+      engine,
+      transmission,
+      fuelConsumption,
+      type,
+      fullName,
+      OwnerEmail,
+      phoneNumber
+    })
+
+    setOpen(false);
+  }
+
+
+
 
   return (
     <div>
@@ -93,8 +148,8 @@ const Contact = (details) => {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Send
+          <Button onClick={handleSend} color="primary" autoFocus>
+            Send Configuration Sheet
           </Button>
         </DialogActions>
       </Dialog>

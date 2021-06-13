@@ -1,11 +1,10 @@
 import React from "react";
-import SellCarForm from './components/SellCarForm/SellCarFrom'
+import SellPage from './components/SellPage/SellPage';
 
 const SellCar = () => {
   return (
     <>
-      
-      <SellCarForm/>
+      <SellPage/>
     </>
   )
 };

@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
     fontSize: 20,
   },
   page: {
-    marginLeft: '300px'
+    marginLeft: '500px'
   }
 }));
 

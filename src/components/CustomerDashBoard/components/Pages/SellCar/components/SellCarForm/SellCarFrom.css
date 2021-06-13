@@ -1,0 +1,16 @@
+.sellCarForm-page {
+  position: absolute;
+  padding: 30px;
+  width: 600px;
+  text-align: center;
+  margin: auto;
+  top: 100px;
+  left: 80px;
+  right: 0px;
+  bottom: 0px;
+
+}
+
+.sellCarForm-header {
+  padding: 30px;
+}

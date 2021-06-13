@@ -6,6 +6,8 @@ import { useStyles } from "./components/MenuItem/styles";
 import CarPick from '../CarPick/CarPick';
 import CarDetails from '../CarDetails/CarDetails';
 import carType from '../CustomerDashBoard/components/Pages/Dashboard/components/BodyType/carType';
+import SellCarForm from './components/Pages/SellCar/components/SellCarForm/SellCarFrom';
+import ManageCar from './components/Pages/SellCar/components/ManageCar/ManageCar';
 
 const CustomerDashBoard = () => {
   const classes = useStyles();
@@ -27,6 +29,8 @@ const CustomerDashBoard = () => {
               <Route exact key={index} path={type.path} component={CarPick} />
             ))}
             <Route exact path='/dashboard-customer/dashboard/cars/:id' component={CarDetails} />
+            <Route exact path='/dashboard-customer/dashboard/sell-cars/submit-car' component={SellCarForm} />
+            <Route exact path='/dashboard-customer/dashboard/sell-cars/manage-car' component={ManageCar} />
           </Switch>
         </div>
       </Router>

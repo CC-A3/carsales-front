@@ -51,7 +51,6 @@
 import React, {useEffect, useState} from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
-import * as api from '../../../../../../Utils/api';
 
 const thumbsContainer = {
   display: 'flex',
@@ -94,6 +93,7 @@ const ImageUploader = (props) => {
         preview: URL.createObjectURL(file)
       })));
       const image = files[0];
+      console.log(image);
       const file = new FormData();
       file.append("file", image);
       // const imgRes = api.uploadImage(file);
