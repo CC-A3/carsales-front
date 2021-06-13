@@ -40,8 +40,8 @@ export default function SellCarForm() {
   const [value, setValue] = React.useState('');
   const history = useHistory();
   const [imgUrl, setImgUrl] = useState([])
-  const inputRef = React.useRef()
-  const [files, setFiles] = useState([]);
+  // const inputRef = React.useRef()
+  // const [files, setFiles] = useState([]);
 
   const handleType = (event) => {
       setValue(event.target.value);
@@ -81,30 +81,28 @@ export default function SellCarForm() {
             const fuelConsumption = values.fuelConsumption;
             const type = value;
             const ownerId = localStorage.getItem("userId");
-            console.log(files);
-            // try {
-            //   const sellCarRes =await api.addCarForSale({
-            //     title,
-            //     price,
-            //     kilometers,
-            //     colour,
-            //     body,
-            //     engine,
-            //     transmission,
-            //     fuelConsumption,
-            //     type,
-            //     ownerId,
-            //     imgUrl,
-            //   })
-            //   if (sellCarRes.status === 200) {
-            //     console.log("go");
-            //     // const id = sellCarRes.data.id;
-            //     const path = `/dashboard-customer/dashboard/sell-cars/manage-car`;
-            //     history.push(path);
-            //   }
-            // } catch (error) {
+            
+            try {
+              const sellCarRes =await api.addCarForSale({
+                title,
+                price,
+                kilometers,
+                colour,
+                body,
+                engine,
+                transmission,
+                fuelConsumption,
+                type,
+                ownerId,
+                imgUrl,
+              })
+              if (sellCarRes.status === 200) {
+                const path = `/dashboard-customer/dashboard/sell-cars/manage-car`;
+                history.push(path);
+              }
+            } catch (error) {
               
-            // }
+            }
           }}
         >
           <FormikStep label="Vehicle Type">
