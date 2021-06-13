@@ -12,5 +12,11 @@
 }
 
 .sellCarForm-header {
-  padding: 30px;
+  padding: 20px;
+
+}
+
+.sellCarForm-subtitle {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }

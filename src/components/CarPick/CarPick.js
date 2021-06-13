@@ -21,7 +21,6 @@ const CarPick = () => {
       if (fetchVehiclesRes.status === 200) {
         setDetails(fetchVehiclesRes.data);
         setIsLoading(false);
-        console.log(fetchVehiclesRes.data, "数值");
       }
     }
 

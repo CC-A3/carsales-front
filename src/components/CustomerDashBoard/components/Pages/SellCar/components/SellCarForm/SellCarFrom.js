@@ -23,9 +23,10 @@ import {  TextField } from 'formik-material-ui';
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // import { mixed, number, object } from 'yup';
-import ImageUploader from '../ImageUploader/ImageUploader';
+// import ImageUploader from '../ImageUploader/ImageUploader';
 import * as api from '../../../../../../Utils/api';
 import './SellCarFrom.css';
+import axios from 'axios';
 
 const sleep = (time) => new Promise((acc) => setTimeout(acc, time));
 
@@ -40,17 +41,56 @@ export default function SellCarForm() {
   const [value, setValue] = React.useState('');
   const history = useHistory();
   const [imgUrl, setImgUrl] = useState([])
-  // const inputRef = React.useRef()
-  // const [files, setFiles] = useState([]);
+  const inputRef = React.useRef()
+  const [files, setFiles] = useState([]);
 
   const handleType = (event) => {
       setValue(event.target.value);
   };
 
+  const upload = () => {
+    console.log(files)
+    const file = new FormData();
+    file.append("file", files);
+    axios
+    .post(
+    `https://api.secondhand-carsales.com/api/v1/vehicles/upload`,
+    file,
+    {
+      headers: {
+        "Content-Type": "multipart/from-data"
+      }
+    }
+  ).then((res) => {
+    console.log("file upload successfully")
+    const url = `http://${res.data}`
+    console.log(url);
+    setImgUrl(url);
+  }).catch(err => {
+    console.log(err);
+  })
+  }
+
   return (
     <div className="sellCarForm-page">
       <header className="sellCarForm-header">
         <h1 className="sellCarForm-title">Sell my car</h1>
+        <div className="sellCarForm-subtitle">
+        <h3 >Please Upload your vehicle image first</h3>
+        <input 
+          type="file" id="input"
+                // onChange={ e => setFiles(e.target.value)}
+          onChange={() => setFiles(inputRef.current.files[0])}
+          ref={inputRef}
+        />
+        <Button
+          type="submit"
+          onClick={upload}
+          variant="contained"
+          color="primary">
+          submit
+        </Button>
+        </div>
       </header>
     <Card>
       <CardContent>
@@ -158,18 +198,17 @@ export default function SellCarForm() {
               <Field fullWidth name="fuelConsumption" component={TextField} label="Fuel Consumption" />
             </Box>
           </FormikStep>
-          <FormikStep label="Vehicle Image">
+          {/* <FormikStep label="Vehicle Image">
             <Box paddingBottom={2}>
-              {/* <Field fullWidth name="imgUrl" type="file" component={TextField} label="Image" /> */}
-              {/* <input 
+              <input 
                 type="file" id="input"
                 // onChange={ e => setFiles(e.target.value)}
                 onChange={() => setFiles(inputRef.current.files[0])}
                 ref={inputRef}
-              /> */}
+                />
               <ImageUploader setImgUrl={setImgUrl} />
             </Box>
-          </FormikStep>
+          </FormikStep> */}
         </FormikStepper>
       </CardContent>
     </Card>
