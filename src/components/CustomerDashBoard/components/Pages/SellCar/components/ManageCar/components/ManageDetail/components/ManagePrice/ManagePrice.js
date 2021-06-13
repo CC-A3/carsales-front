@@ -65,7 +65,7 @@ const ManagePrice = ({ details, update, setUpdate }) => {
       >
         <DialogTitle id="alert-dialog-title">
           <ListItem>
-            <ListItemText primary="This vehicle current price is " secondary={`$${price}`} />
+            <ListItemText primary="The current price of this vehicle is " secondary={`$${price}`} />
           </ListItem>
         </DialogTitle>
         <DialogContent>

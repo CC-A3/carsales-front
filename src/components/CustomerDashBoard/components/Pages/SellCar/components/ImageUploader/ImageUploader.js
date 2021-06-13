@@ -50,6 +50,7 @@
 
 import React, {useEffect, useState} from 'react';
 import { useDropzone } from 'react-dropzone';
+import * as api from '../../../../../../Utils/api';
 import axios from 'axios';
 
 const thumbsContainer = {
@@ -84,7 +85,7 @@ const img = {
 };
 
 
-const ImageUploader = (props) => {
+const ImageUploader = ({setImgUrl}) => {
   const [files, setFiles] = useState([]);
   const {getRootProps, getInputProps} = useDropzone({
     accept: 'image/*',
@@ -96,21 +97,20 @@ const ImageUploader = (props) => {
       console.log(image);
       const file = new FormData();
       file.append("file", image);
-      // const imgRes = api.uploadImage(file);
-      // if (imgRes.status === 200) {
-      //   console.log(imgRes.data, "return image value");
-      // }
+
       axios
         .post(
-        `http://localhost:8080/api/v1/image/upload`,
+        `http://localhost:8080/api/v1/vehicles/upload`,
         file,
         {
           headers: {
             "Content-Type": "multipart/from-data"
           }
         }
-      ).then(() => {
+      ).then((res) => {
         console.log("file upload successfully")
+        console.log(res.data);
+        setImgUrl(res.data);
       }).catch(err => {
         console.log(err);
       })

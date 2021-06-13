@@ -63,16 +63,16 @@ const Header = () => {
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
           <h1 className={classes.appbarTitle}>
-            Car<span className={classes.colorText}>Sales</span>
+            Secondhand <span className={classes.colorText}>CarSales</span>
           </h1>
           <Link to="/login" className={classes.link}>
             <Fab size="medium" color="primary" variant="extended" className={classes.margin}>
               Login
             </Fab>
           </Link>
-          <Link to="/login" className={classes.link}>
+          <Link to="/signup" className={classes.link}>
             <Fab size="medium" color="secondary" variant="extended" className={classes.margin}>
-              Sell My Car
+              Sign Up
             </Fab>
           </Link>
           
@@ -87,7 +87,7 @@ const Header = () => {
         <div className={classes.container}>
           <h1 className={classes.title}>
             Welcome to <br />
-            Car<span className={classes.colorText}>Sales.</span>
+            Secondhand <span className={classes.colorText}>CarSales</span>
           </h1>
           <Scroll to="place-to-visit" smooth={true}>
             <IconButton>

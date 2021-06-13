@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const SellPage = () => {
   const classes = useStyles();
   const place1 = {
-    title: 'Add You Vehicle',
+    title: 'Add Your Vehicle',
     description:
       "Click here to submit information about your car",
     imageUrl: s,
@@ -30,7 +30,7 @@ const SellPage = () => {
   }
 
   const place2 = {
-    title: 'Mange You Vehicle',
+    title: 'Mange Your Vehicle',
       description:
         "Click here for your personal vehicle management",
       imageUrl: m,

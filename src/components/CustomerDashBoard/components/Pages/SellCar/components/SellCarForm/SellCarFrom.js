@@ -93,6 +93,7 @@ export default function SellCarForm() {
                 fuelConsumption,
                 type,
                 ownerId,
+                imgUrl,
               })
               if (sellCarRes.status === 200) {
                 console.log("go");

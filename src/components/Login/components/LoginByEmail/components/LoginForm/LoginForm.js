@@ -121,13 +121,6 @@ const LoginForm = () => {
             <Grid container direction="row" justify="space-between" alignItems="center">
               <Grid item>
                 <Typography>
-                  <Link className="link" to="/">
-                    Forgot Password?
-                  </Link>
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography>
                   New User? &nbsp;
                   <Link id="signUpLink" className="link" to="/signup">
                     Sign Up

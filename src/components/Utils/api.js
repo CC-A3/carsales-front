@@ -55,7 +55,7 @@ export const changePassword = ({ id, previousPassword, newPassword }) => axios({
   },
 });
 
-export const addCarForSale = ({ title, price, kilometers, colour, body, engine, transmission, fuelConsumption, type, ownerId}) => axios({
+export const addCarForSale = ({ title, price, kilometers, colour, body, engine, transmission, fuelConsumption, type, ownerId, imgUrl}) => axios({
   method: 'post',
   url: `${baseUrl}/vehicles/add`,
   data: {
@@ -69,16 +69,17 @@ export const addCarForSale = ({ title, price, kilometers, colour, body, engine, 
     fuelConsumption,
     type,
     ownerId,
+    imgUrl,
   }
 });
 
-export const uploadImage = (file) => axios({
-  method: 'post',
-  url: `${baseUrl}/image/upload`,
-  params: {
-    file,
-  }
-})
+// export const uploadImage = (file) => axios({
+//   method: 'post',
+//   url: `${baseUrl}/vehicles/upload`,
+//   params: {
+//     file,
+//   }
+// })
 export const fetchVehiclesByType = ({ type, clientId }) => axios({
   method: 'get',
   url: `${baseUrl}/vehicles`,

@@ -72,7 +72,7 @@ const ManageStatus = ({ details, update, setUpdate }) => {
       >
         <DialogTitle id="alert-dialog-title">
           <ListItem>
-            <ListItemText primary="This vehicle current status is" secondary={`${details.status}`} />
+            <ListItemText primary="The current status of this vehicle is" secondary={`${details.status}`} />
           </ListItem>
         </DialogTitle>
         <DialogContent>
