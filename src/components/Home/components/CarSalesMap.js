@@ -1,12 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
-import { Collapse } from '@material-ui/core';
 import Marker from './Marker';
 
 
 
 const CarSalesMap = (props) => {
-  const { checked} = props
   const getMapOptions = (maps) => {
     return {
       disableDefaultUI: true,

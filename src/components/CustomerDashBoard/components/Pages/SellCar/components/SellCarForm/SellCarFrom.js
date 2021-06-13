@@ -1,9 +1,27 @@
-import { Box, Button, Card, CardContent, CircularProgress, Grid, Step, StepLabel, Stepper, Snackbar } from '@material-ui/core';
+/* eslint-disable no-unused-vars */
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CircularProgress,
+  Grid,
+  Step,
+  StepLabel,
+  Stepper,
+  Snackbar,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+
+} from '@material-ui/core';
 import { Field, Form, Formik, } from 'formik';
 import MuiAlert from '@material-ui/lab/Alert';
-import { useHistory } from "react-router-dom";
+import { useHistory  } from "react-router-dom";
 import {  TextField } from 'formik-material-ui';
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 // import { mixed, number, object } from 'yup';
 import ImageUploader from '../ImageUploader/ImageUploader';
 import * as api from '../../../../../../Utils/api';
@@ -11,10 +29,22 @@ import './SellCarFrom.css';
 
 const sleep = (time) => new Promise((acc) => setTimeout(acc, time));
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(0),
+    minWidth: 570,
+  },
+}));
 export default function SellCarForm() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState('');
   const history = useHistory();
   const [imgUrl, setImgUrl] = useState([])
     // const inputRef = React.useRef()
+  
+  const handleType = (event) => {
+      setValue(event.target.value);
+  };
 
   return (
     <div className="sellCarForm-page">
@@ -33,7 +63,7 @@ export default function SellCarForm() {
             engine: '',
             transmission: '',
             fuelConsumption: '',
-            type: '',
+            // type: '',
             // imgUrl: null,
           }}
           onSubmit={async (values) => {
@@ -48,7 +78,7 @@ export default function SellCarForm() {
             const engine = values.engine;
             const transmission = values.engine;
             const fuelConsumption = values.fuelConsumption;
-            const type = values.type;
+            const type = value;
             const ownerId = localStorage.getItem("userId");
 
             try {
@@ -66,8 +96,8 @@ export default function SellCarForm() {
               })
               if (sellCarRes.status === 200) {
                 console.log("go");
-                const id = sellCarRes.data.id;
-                const path = `/dashboard-customer/dashboard/cars/${id}`;
+                // const id = sellCarRes.data.id;
+                const path = `/dashboard-customer/dashboard/sell-cars/manage-car`;
                 history.push(path);
               }
             } catch (error) {
@@ -77,7 +107,24 @@ export default function SellCarForm() {
         >
           <FormikStep label="Vehicle Type">
             <Box paddingBottom={2}>
-              <Field fullWidth name="type" component={TextField} label="Vehicle Type" />
+                {/* <Field fullWidth name="type" component={TextField} label="Vehicle Type" /> */}
+              <FormControl className={classes.formControl}>
+                <InputLabel id="demo-simple-select-label">Vehicle Type</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={value}
+                  onChange={handleType}
+                >
+                  <MenuItem value="SUV">SUV</MenuItem>
+                  <MenuItem value="SEDAN">SEDAN</MenuItem>
+                  <MenuItem value="WAGON">WAGON</MenuItem>
+                  <MenuItem value="HATCH">HATCH</MenuItem>
+                  <MenuItem value="UTE">UTE</MenuItem>
+                  <MenuItem value="CONVERTIBLE">CONVERTIBLE</MenuItem>
+                </Select>
+              </FormControl>
+          
             </Box>
             <Box paddingBottom={2}>
               <Field fullWidth name="title" component={TextField} label="Vehicle Name" />
@@ -85,15 +132,6 @@ export default function SellCarForm() {
             <Box paddingBottom={2}>
               <Field fullWidth name="price" component={TextField} label="Vehicle Price" />
             </Box>
-            {/* <Box paddingBottom={2}>
-              <Field
-                fullWidth
-                name="price"
-                type="number"
-                component={TextField}
-                label="Price"
-              />
-            </Box> */}
           </FormikStep>
           <FormikStep
             label="Vehicle Details"

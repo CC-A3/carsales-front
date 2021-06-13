@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import SingleCarCard from './components/SingleCarCard';
 import './CarPick.css';
@@ -34,7 +34,11 @@ const CarPick = () => {
         <section className="carPick-results">
         {details.length === 0 ? <h2 className="carPick-number">0 cars</h2> : <div>
           <>
-            <h2 className="carPick-number">{details.length} cars</h2>
+              <h2 className="carPick-number">
+              <Link to='/dashboard-customer/dashboard' className="carPick-goback" >Go Back </Link> /
+                   {details.length} cars
+              </h2>
+           
             {details.map((detail) => (
               <>
                 <SingleCarCard detail={detail} />

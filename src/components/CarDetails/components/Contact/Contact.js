@@ -15,6 +15,7 @@ import {
 import CallIcon from '@material-ui/icons/Call';
 import FaceIcon from '@material-ui/icons/Face';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import * as api from '../../../Utils/api';
 
@@ -24,9 +25,13 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
+  btn: {
+    marginLeft: '10px',
+  },
 }));
 
 const Contact = (details) => {
+  const history = useHistory();
   const id = details.details.ownerId;
   const [owner, setOwner] = useState([])
 
@@ -61,9 +66,11 @@ const Contact = (details) => {
   const OwnerEmail = owner.email;
   const phoneNumber = owner.phoneNumber;
 
+  const url = type.toLowerCase();
+
   const handleSend = () => {
     console.log(
-         email,
+      email,
       title,
       price,
       kilometers,
@@ -99,11 +106,16 @@ const Contact = (details) => {
   }
 
 
-
+  const goBack = () => {
+    history.push(`/dashboard-customer/dashboard/cars/${url}`)
+  }
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={goBack}  >
+        Go Back
+      </Button>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen} className={classes.btn}>
         Contact SELLER
       </Button>
       <Dialog
