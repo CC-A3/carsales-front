@@ -1,0 +1,55 @@
+name: Automatic Rebase
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  rebase:
+    name: Rebase
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/rebase')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add reaction
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: eyes
+      - name: Create comment - starting
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            **Starting to rebase code!** :hammer_and_wrench: It might take 1 minute. Please be patient!
+          reactions: laugh
+      - name: Checkout the latest code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
+      - name: Automatic Rebase
+        id: autorebase
+        uses: cirrus-actions/rebase@1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create comment - success 
+        # if: steps.build.outputs.exit_code == 0
+        if: ${{ success() }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            **Rebase code successfully!** :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: 
+            Now you are able to merge your code!
+          reactions: rocket
+      - name: Create comment - failure
+        # if: steps.build.outputs.exit_code != 0
+        if: ${{ failure() }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            **Warning!** :x: :x: :x: :x: :x: :x: :x: :x: :x: :x:
+            Fail to rebase code! Please follow the instructions below to resolve it:
+            1. switch to main branch and run run `git pull --rebase` to keep your local main branch up-to-date with origin.
+            2. Then switch to your feature branch and run `git rebase main` to keep your local feature branch up-to-date with local main.
+            3. Finally use `git push --force-with-lease` to push your feature branch to origin.
+          reactions: "-1"
